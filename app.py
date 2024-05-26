@@ -21,6 +21,6 @@ def home():
     if response.status_code == 200:
     # Access the response data (if any)
         response_data = response.json() 
-        return(response_data)
+        return(response_data["candidates"][0]["content"]["parts"][0]["text"])
     else:
         return(response.json())
