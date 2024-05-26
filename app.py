@@ -4,7 +4,7 @@ import os
 
 app = Flask(__name__)
 # Define the URL for the POST request
-url = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key='
+url = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key='
 url += os.environ.get("GOOGLE_API_KEY")
 # Create a dictionary for headers
 headers = {
