@@ -14,7 +14,7 @@ headers = {
 @app.route('/')
 def home():
     # Prepare the data to be sent (can be JSON, string, etc.)
-    q = "Explain how AI works, respond with well formatted HTML" 
+    q = "Explain how AI works, respond in HTML not Markdown" 
     data = '{"contents":[{"parts":[{"text":"' + q + '"}]}]}'
     # Send the POST request with headers and data
     response = requests.post(url, headers=headers, data=data)
