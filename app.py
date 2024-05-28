@@ -14,6 +14,6 @@ def home():
 
 @app.route('/query')
 def query():
-    q = request.args.get('q')
+    q = request.args.get('q') + " (use HTML to format the response)"
     response = model.generate_content(q)
     return render_template('index.html', output=response.text)

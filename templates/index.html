@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link href="/static/styles.css" rel="stylesheet">
 <h2> Gemini API Steam Demo </h2>
-<div id="output">{{ output }}</div>
+{{ output|safe }}
 <p>
 <form action="/query" onsubmit="move()">
   <div class="container">
