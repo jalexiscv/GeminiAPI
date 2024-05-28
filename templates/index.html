@@ -1,32 +1,33 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link href="/static/styles.css" rel="stylesheet">
 <h2> Gemini API Steam Demo </h2>
-<div id="output"></div>
+<div id="output">{{ output }}</div>
 <p>
-<form action="/query">
+<form action="/query" onsubmit="move()">
   <div class="container">
     <label for="q"><b>Query</b></label>
     <input type="text" placeholder="Enter Question" name="q" required>
-    <button type="submit">Submit</button>
+    <button name="button" type="submit">Submit</button>
   </div>
-  </form>
+</form>
+<div class="w3-container">
+<div class="w3-light-grey">
+  <div id="myBar" class="w3-container w3-green w3-center"></div>
+</div>
 <script>
-function getResponse() {
-  var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-      if (this.responseText == "END")
-      {
-        clearInterval(interval);
-      }
-      else
-      {
-      document.getElementById("output").innerHTML +=
-      this.responseText;
+  function move() {
+    var elem = document.getElementById("myBar");   
+    var width = 0;
+    var id = setInterval(frame, 50);
+    function frame() {
+      if (width >= 100) {
+        clearInterval(id);
+      } else {
+        width++; 
+        elem.style.width = width + '%'; 
+        elem.innerHTML = width * 1  + '%';
       }
     }
-  };
-  xhttp.open("GET", "/stream", true);
-  xhttp.send();
-}
-const interval = setInterval(getResponse, 1000);
-</script>
+  }
+  </script>
