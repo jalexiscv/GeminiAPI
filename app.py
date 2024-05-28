@@ -1,27 +1,33 @@
-from flask import Flask
-import requests
+from flask import Flask, render_template, session, request
+import google.generativeai as genai
 import os
 
 app = Flask(__name__)
-# Define the URL for the POST request
-url = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key='
-url += os.environ.get("GOOGLE_API_KEY")
-# Create a dictionary for headers
-headers = {
-    "Content-Type": "application/json",  # Adjust content type as needed (e.g., application/xml)
-}
+app.secret_key = os.urandom(16)
+genai.configure(api_key=os.getenv('GOOGLE_API_KEY'))
+model = genai.GenerativeModel('gemini-1.5-flash')
+chunks = []
 
 @app.route('/')
 def home():
-    # Prepare the data to be sent (can be JSON, string, etc.)
-    q = "Explain how AI works, respond in HTML and don't use Markdown or ```" 
-    data = '{"contents":[{"parts":[{"text":"' + q + '"}]}]}'
-    # Send the POST request with headers and data
-    response = requests.post(url, headers=headers, data=data)
-    # Check the response status code
-    if response.status_code == 200:
-    # Access the response data (if any)
-        response_data = response.json() 
-        return(response_data["candidates"][0]["content"]["parts"][0]["text"])
+    return render_template('index.html')
+
+@app.route("/query")
+def query():
+    q = request.args.get('q')
+    response = model.generate_content(q, stream=True)
+    for chunk in response:
+        chunks.append(chunk.text)
+    return render_template('index.html')
+
+@app.route('/stream')
+def stream():
+    if 'index' in session:
+        if  int(session['index']) < len(chunks) - 1:
+            session['index'] += 1
+            return str(chunks[session['index']])
+        else:
+            return "END"
     else:
-        return(response.json())
+        session['index'] = -1
+        return ""
