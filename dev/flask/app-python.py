@@ -12,6 +12,5 @@ def home():
 
 @app.route('/stream')
 def stream():
-    response = model.generate_content("What is the meaning of life?", stream=True)
-    for chunk in response:
-        return chunk.text
+    response = model.generate_content("What is the meaning of life?")
+    return response.text
