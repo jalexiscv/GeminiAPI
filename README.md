@@ -3,7 +3,7 @@
 Simple Gemini API Test
 
 Based on:
-* [Simple Demos](https://github.com/eniompw/GeminiAPI/tree/main/dev)
+* [Simple Python Demo](https://github.com/eniompw/GeminiAPI/blob/main/dev/python.py)
 * [LLM Vercel Groq](https://github.com/eniompw/LLMVercelGroq)
 
 Ref:  
