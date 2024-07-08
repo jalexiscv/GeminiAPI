@@ -8,10 +8,13 @@ model = genai.GenerativeModel('gemini-1.5-flash')
 
 @app.route('/')
 def home():
-    return render_template('index.html', output="")
+    return render_template('index.html')
 
 @app.route('/query')
 def query():
     q = request.args.get('q') + " (use HTML to format the response)"
     response = model.generate_content(q)
-    return render_template('index.html', output=response.text)
+    return response.text
+
+if __name__ == '__main__':
+    app.run(debug=True)

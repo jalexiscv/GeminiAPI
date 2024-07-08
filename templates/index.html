@@ -1,33 +1,19 @@
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link href="/static/styles.css" rel="stylesheet">
-<h2> <b> Gemini API Demo </b> </h2>
-{{ output|safe }}
-<p>
-<form action="/query" onsubmit="move()">
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="/static/styles.css" rel="stylesheet">
+</head>
+<body>
+<h2>MPW GPT</h2>
+
+  <form action="/query">
   <div class="container">
-    <label for="q"><b>Query</b></label>
+    <label for="uname"><b>Query</b></label>
     <input type="text" placeholder="Enter Question" name="q" required>
-    <button name="button" type="submit">Submit</button>
+    <button type="submit">Submit</button>
   </div>
-</form>
-<div class="w3-container">
-<div class="w3-light-grey">
-  <div id="myBar" class="w3-container w3-green w3-center"></div>
-</div>
-<script>
-  function move() {
-    var elem = document.getElementById("myBar");   
-    var width = 0;
-    var id = setInterval(frame, 50);
-    function frame() {
-      if (width >= 100) {
-        clearInterval(id);
-      } else {
-        width++; 
-        elem.style.width = width + '%'; 
-        elem.innerHTML = width * 1  + '%';
-      }
-    }
-  }
-  </script>
+  </form>
+
+</body>
+</html>
