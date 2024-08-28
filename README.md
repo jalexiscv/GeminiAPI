@@ -6,6 +6,12 @@ Based on:
 * [Simple Python Demo](https://github.com/eniompw/GeminiAPI/blob/main/dev/python.py)
 * [LLM Vercel Groq](https://github.com/eniompw/LLMVercelGroq)
 
+## Setup API Key Environment Variable
+```
+echo 'export GOOGLE_API_KEY=nvapi-...' >> ~/.bashrc
+source ~/.bashrc
+```
+
 Ref:  
 * [Gemini API Docs REST](https://ai.google.dev/gemini-api/docs/get-started/tutorial?lang=rest#text-only_input)
 * [Gemini API Docs Python SDK](https://ai.google.dev/gemini-api/docs/quickstart?lang=python#initialize-generative)
