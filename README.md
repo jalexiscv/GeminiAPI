@@ -8,7 +8,7 @@ Based on:
 
 ## Setup API Key Environment Variable
 ```
-echo 'export GOOGLE_API_KEY=nvapi-...' >> ~/.bashrc
+echo 'export GOOGLE_API_KEY=AI...' >> ~/.bashrc
 source ~/.bashrc
 ```
 
